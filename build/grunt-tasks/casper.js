@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     process.env.PHANTOMJS_EXECUTABLE =
       '../../node_modules/karma-phantomjs-launcher/node_modules/.bin/phantomjs'
     grunt.util.spawn({
-      cmd: '../../node_modules/.bin/casperjs',
+      cmd: '../../node_modules/.bin/casperjs.cmd',
       args: ['test', '--concise', './' + file],
       opts: {
         stdio: ['ignore', process.stdout, 'ignore'],

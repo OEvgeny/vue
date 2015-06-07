@@ -39,7 +39,7 @@ module.exports = function (grunt) {
       },
       browsers: {
         options: {
-          browsers: ['Chrome', 'Firefox', 'Safari'],
+          browsers: ['Firefox'],//'Chrome', 'Firefox', 'Safari'],
           reporters: ['progress']
         }
       },
@@ -78,7 +78,7 @@ module.exports = function (grunt) {
     }
 
   })
-  
+
   // load npm tasks
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-karma')
