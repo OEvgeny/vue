@@ -31,8 +31,8 @@ exports._initData = function () {
     i = props.length
     while (i--) {
       key = _.camelize(props[i])
-      if (!(key in data)) {
-        data[key] = null
+      if (!(key in data) && key !== '$data') {
+        data[key] = undefined
       }
     }
   }
@@ -65,7 +65,9 @@ exports._setData = function (newData) {
     i = props.length
     while (i--) {
       key = props[i]
-      newData.$set(key, oldData[key])
+      if (key !== '$data') {
+        newData.$set(key, oldData[key])
+      }
     }
   }
   // unproxy keys not present in new data
@@ -219,9 +221,7 @@ exports._defineMeta = function (key, value) {
     enumerable: true,
     configurable: true,
     get: function metaGetter () {
-      if (Observer.target) {
-        Observer.target.addDep(dep)
-      }
+      dep.depend()
       return value
     },
     set: function metaSetter (val) {
